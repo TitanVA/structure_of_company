@@ -36,9 +36,9 @@ schema_view = get_schema_view(
     permission_classes=[permissions.AllowAny],
 )
 
-departments = SimpleRouter()
+departments = DefaultRouter()
 departments.register('departments', DepartmentViewSet, "Department")
-employees = SimpleRouter()
+employees = DefaultRouter()
 employees.register('employees/employer', EmployerNameVewSet, "EmployerName")
 employees.register('employees/position', PositionVewSet, "Position")
 employees.register('employees', EmployeeVewSet, "Employee")
