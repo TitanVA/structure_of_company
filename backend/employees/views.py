@@ -1,4 +1,4 @@
-from rest_framework import filters
+from rest_framework import filters, permissions
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.viewsets import ModelViewSet
 
@@ -13,16 +13,19 @@ class StandardResultsSetPagination(PageNumberPagination):
 
 
 class EmployerNameVewSet(ModelViewSet):
+    permission_classes = (permissions.IsAuthenticated,)
     queryset = EmployerName.objects.all()
     serializer_class = EmployerNameSerializer
 
 
 class PositionVewSet(ModelViewSet):
+    permission_classes = (permissions.IsAuthenticated,)
     queryset = Position.objects.all()
     serializer_class = PositionSerializer
 
 
 class EmployeeVewSet(ModelViewSet):
+    permission_classes = (permissions.IsAuthenticated,)
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
     filter_backends = [filters.SearchFilter]
