@@ -22,6 +22,7 @@ from rest_framework.routers import DefaultRouter, SimpleRouter
 
 from departments.views import DepartmentViewSet
 from employees.views import EmployeeVewSet, EmployerNameVewSet, PositionVewSet
+from projects.views import ProjectsVewSet
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -42,6 +43,8 @@ employees = DefaultRouter()
 employees.register('employees/employer', EmployerNameVewSet, "EmployerName")
 employees.register('employees/position', PositionVewSet, "Position")
 employees.register('employees', EmployeeVewSet, "Employee")
+projects = DefaultRouter()
+projects.register('projects/projects', ProjectsVewSet, "Projects")
 
 urlpatterns = [
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
@@ -50,3 +53,4 @@ urlpatterns = [
 
 urlpatterns += departments.urls
 urlpatterns += employees.urls
+urlpatterns += projects.urls
